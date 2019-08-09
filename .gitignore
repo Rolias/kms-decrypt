@@ -1,0 +1,10 @@
+publish
+node_modules
+build
+coverage
+out
+*.tgz
+*.encrypted
+!.eslintrc.js
+!.gitignore
+!.mocharc.js

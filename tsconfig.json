@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": true,
+    "rootDir": "./src",
+    "outDir": "./build",
+    "module": "commonjs",
+    "target": "es2017",
+    "moduleResolution": "node",
+    "checkJs": false,
+    "allowJs": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "watch": false,
+    "strictNullChecks": true
+  },
+  "include": ["./**/*", "src/.clientConfig.ts"],
+  "exclude": ["prettier.config.js", "./build/*"]
+}
