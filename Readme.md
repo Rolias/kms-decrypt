@@ -9,9 +9,9 @@ A simple package that takes a path to a file that's been encrypted with KMS and 
 npm install @pluralsight/kms-decrypt
 // Then in a file where you want to use the package
 
-import {Decrypt, KmsInterfaces} from 'kms-decrypt'
+import {Decrypt, KmsClientInfo} from 'kms-decrypt'
 
-const kmsValues: KmsInterfaces.KmsClientInfo = {
+const kmsValues: KmsClientInfo = {
   projectId:`name-of-your-gcp-project`,
   keyRingId:`name-of-your-keyring`,
   cryptoKeyId : `name-of-your-key`,
@@ -22,6 +22,8 @@ export const yourFunction = async(): Promise<void> =>{
 
 const decryption = new Decrypt(kmsValues)
 const encryptedFilePath = `/some/path/encryptedFilename.encrypted`
+// another example, assuming you have a folder named secrets at the root level
+// const encryptedFilePath = path.resolve(__dirname, `./secrets/Filename.encrypted`)
 const testToken = await decryption.decryptToString(encryptedFilePath)
 }
 ```
