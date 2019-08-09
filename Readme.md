@@ -4,23 +4,26 @@ A simple package that takes a path to a file that's been encrypted with KMS and 
 
 ## Usage
 
-```
-
+```typescript
+// Install the package
 npm install @pluralsight/kms-decrypt
-// Set up your client info per the KmsClientInfo interface
+// Then in a file where you want to use the package
 
-const kmsValues: I.KmsClientInfo = {
+import {Decrypt, KmsInterfaces} from 'kms-decrypt'
+
+const kmsValues: KmsInterfaces.KmsClientInfo = {
   projectId:`name-of-your-gcp-project`,
   keyRingId:`name-of-your-keyring`,
   cryptoKeyId : `name-of-your-key`,
   location: `location`
 }
 
-// In an async function
-import {Decrypt} from 'kms-decrypt'
+export const yourFunction = async(): Promise<void> =>{
+
 const decryption = new Decrypt(kmsValues)
 const encryptedFilePath = `/some/path/encryptedFilename.encrypted`
 const testToken = await decryption.decryptToString(encryptedFilePath)
+}
 ```
 
 Decrypt.test has an integration test. You need to encrypt the testSecret.txt file with your credentials and put the testSecret.encrypted file in the src folder. Then create a file named `.clientConfig.ts like this:

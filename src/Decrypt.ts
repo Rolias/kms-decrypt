@@ -2,6 +2,7 @@ import * as kms from '@google-cloud/kms'
 import * as fs from 'fs'
 import * as I from './Interfaces'
 
+export {I as KmsInterfaces}
 export class Decrypt {
   private kmsClientData : I.KmsClientInfo
   private kmsClient: kms.KeyManagementServiceClient
