@@ -1,6 +1,6 @@
 {
   "name": "kms-decrypt",
-  "version": "1.0.0-beta.04",
+  "version": "1.0.0-beta.5",
   "description": "Decrypts a KMS encrypted file into a string",
   "main": "build/Decrypt.js",
   "types": "build/Decrypt.d.ts",
