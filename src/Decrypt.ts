@@ -4,7 +4,7 @@ import * as I from './Interfaces'
 
 export {KmsClientInfo} from './Interfaces'
 export class Decrypt {
-  private kmsClientData : I.KmsClientInfo
+  private kmsClientData: I.KmsClientInfo
   private kmsClient: kms.KeyManagementServiceClient
 
   public constructor(data: I.KmsClientInfo) {
@@ -12,9 +12,12 @@ export class Decrypt {
     this.kmsClient = new kms.KeyManagementServiceClient()
   }
 
-  public async decryptToString(encryptedFilePath:string): Promise<string> {
+  public async decryptToString(encryptedFilePath: string): Promise<string> {
     const encryptedBuffer = fs.readFileSync(encryptedFilePath)
-    const ciphertext = encryptedBuffer.toString(`base64`)
+    // NOTE @google-cloud/kms from 1.3.1 to 1.5.3 made a breaking change (semver violation)
+    // The kmsClient.decrypt()  function below now wants ciphertext to be a buffer not a string
+    // const ciphertext = encryptedBuffer.toString(`base64`)
+    const ciphertext = encryptedBuffer
     const name = this.kmsClient.cryptoKeyPath(
       this.kmsClientData.projectId,
       this.kmsClientData.location,
