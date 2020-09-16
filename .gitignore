@@ -8,3 +8,4 @@ out
 !.eslintrc.js
 !.gitignore
 !.mocharc.js
+!.psmetadata
