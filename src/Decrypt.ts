@@ -26,6 +26,9 @@ export class Decrypt {
     )
     const [decryptedData] = await this.kmsClient.decrypt({name, ciphertext})
     const buffer = decryptedData.plaintext
+    if (buffer == undefined){
+      return ``
+    }
     const result = buffer.toString()
     return result
   }
